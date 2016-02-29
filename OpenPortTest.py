@@ -1,13 +1,16 @@
 #!/usr/bin/python
 
+#Here is a basic script to knocking port
+
+
 from time import sleep
 import socket 
 import os
 
+
 os.system('clear')
-print "Launching OpenPortTest, this tools is made by Jugulaire"
+print "Launching OpenPortTest, this tools is made by Jugulaire\n"
 sleep(1)
-print ""
 
 common_port ={
         1 : ' TCP Port Service Multiplexer (TCPMUX) ',
@@ -64,9 +67,8 @@ common_port ={
     }
 
 
-ip = raw_input("Enter target IP iadress : ")
-print ""
-print "> Starting port testing on", ip
+ip = raw_input("Enter target IP iadress : \n")
+print "> Starting port testing on", ip , "\n"
 sleep(1)
 nb = 0
 open_port = []
@@ -76,18 +78,17 @@ for key in range(65536):
     if not(sock.connect_ex((ip,key))):
         open_port.append(key)
         nb+=1
-    if key == 16384:
-        print "==> 25% finished with",nb,"port(s) find"
-        print""
-    if key == 32768:
-        print "=====> 50% finished with",nb,"port(s) find"
-        print""
-    if key == 52428:
-        print "========> 80 finished with",nb,"port(s) find"
-        print""
-print "Finished with",nb, "opened port(s)" 
+    if key == ((65536/100)*25):
+        print "==> 25% finished with",nb,"port(s) find\n"
+    if key == ((65536/100)*25):
+        print "=====> 50% finished with",nb,"port(s) find\n"
+    if key == ((65536/100)*25):
+        print "========> 80 finished with",nb,"port(s) find\n"
+print "Finished with",nb, "opened port(s)\n" 
 
 for port in open_port:
     for key, value in common_port.items():
         if port == key:
-            print "=> Port",port,"used in",value,"is open"
+            print "=> Port",port,"used in",value,"is open\n" 
+print "=> Port",port,"is opened\n"
+sock.close()
