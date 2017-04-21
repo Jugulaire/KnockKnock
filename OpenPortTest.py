@@ -73,16 +73,16 @@ sleep(1)
 nb = 0
 open_port = []
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-sock.settimeout(1)
+sock.settimeout(10)
 for key in range(65536):
     if not(sock.connect_ex((ip,key))):
         open_port.append(key)
         nb+=1
     if key == ((65536/100)*25):
         print "==> 25% finished with",nb,"port(s) find\n"
-    if key == ((65536/100)*25):
+    if key == ((65536/100)*50):
         print "=====> 50% finished with",nb,"port(s) find\n"
-    if key == ((65536/100)*25):
+    if key == ((65536/100)*80):
         print "========> 80 finished with",nb,"port(s) find\n"
 print "Finished with",nb, "opened port(s)\n" 
 
